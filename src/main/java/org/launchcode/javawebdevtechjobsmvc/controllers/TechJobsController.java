@@ -32,7 +32,6 @@ public class TechJobsController {
     @ModelAttribute("actions")
     public static HashMap<String, String> getActionChoice(Model model) {
         model.addAttribute("actionsTitle","View jobs by:");
-        model.addAttribute("actions",actionChoices);
         return actionChoices;
 
     }
@@ -41,10 +40,12 @@ public class TechJobsController {
 
     public static HashMap<String, String> getColumnChoices(Model model) {
         model.addAttribute("columnsTitle","View jobs By Category");
+
         return columnChoices;
     }
     @ModelAttribute("tables")
-    public static HashMap<String, Object> getTableChoices() {
+    public static HashMap<String, Object> getTableChoices(Model model) {
+
         return tableChoices;
     }
 }

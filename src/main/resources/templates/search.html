@@ -6,9 +6,8 @@
 
 <div th:replace="fragments :: page-header"></div>
 
-<div class="container body-content">
+<p class="container body-content">
 
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <form th:action="@{/search/results}" method = "post">
         <h2>Search by:</h2>
@@ -20,7 +19,7 @@
                         name="searchType"
                         th:id="${column.key}"
                         th:value="${column.key}"
-                        th:checked="${column.key == searchValue}" />
+                        th:checked="${column.key == 'all' || column.key == 'searchType'}" />
                 <label th:for="${column.key}" th:text="${column.value}" ></label>
             </span>
 
@@ -35,11 +34,10 @@
     </form>
 
     <hr />
+<h1 class ="centered" th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
-    <div th:unless="${jobs} and ${jobs.size()}">
-        <h2>No Results</h2>
-    </div>
+
     <div th:if="${jobs} and ${jobs.size()}">
 
         <h3 th:text="${jobs.size() + ' Result(s)'}"></h3></div>

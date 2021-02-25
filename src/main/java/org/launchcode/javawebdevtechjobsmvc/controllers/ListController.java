@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.launchcode.javawebdevtechjobsmvc.models.JobData;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 
 /**
  * Created by LaunchCode
@@ -18,23 +18,23 @@ import java.util.HashMap;
 @RequestMapping(value = "list")
 public class ListController extends TechJobsController{
 
-//    static HashMap<String, String> columnChoices = new HashMap<>();
-//    static HashMap<String, Object> tableChoices = new HashMap<>();
+//   static HashMap<String, String> columnChoices = new HashMap<>();
+// static HashMap<String, Object> tableChoices = new HashMap<>();
 
     public ListController () {
         super();
-//        DRY(dont repeat yourself code)
-//        columnChoices.put("all", "All");
-//        columnChoices.put("employer", "Employer");
-//        columnChoices.put("location", "Location");
-//        columnChoices.put("positionType", "Position Type");
-//        columnChoices.put("coreCompetency", "Skill");
-//
-//        tableChoices.put("all","View All");
-//        tableChoices.put("employer", JobData.getAllEmployers());
-//        tableChoices.put("location", JobData.getAllLocations());
-//        tableChoices.put("positionType", JobData.getAllPositionTypes());
-//        tableChoices.put("coreCompetency", JobData.getAllCoreCompetency());
+  /*    DRY(don't repeat yourself code)
+        columnChoices.put("all", "All");
+        columnChoices.put("employer", "Employer");
+        columnChoices.put("location", "Location");
+        columnChoices.put("positionType", "Position Type");
+        columnChoices.put("coreCompetency", "Skill");
+
+        tableChoices.put("all","View All");
+        tableChoices.put("employer", JobData.getAllEmployers());
+        tableChoices.put("location", JobData.getAllLocations());
+        tableChoices.put("positionType", JobData.getAllPositionTypes());
+        tableChoices.put("coreCompetency", JobData.getAllCoreCompetency()); */
     }
 
     @RequestMapping(value = "")
@@ -53,7 +53,7 @@ public class ListController extends TechJobsController{
     @RequestMapping(value = "jobs")
     public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
         ArrayList<Job> jobs;
-        if (column.toLowerCase().equals("all")){
+        if (column.equalsIgnoreCase("all")){
             jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
         } else {
